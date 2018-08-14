@@ -1,6 +1,5 @@
 package com.takumiCX.concurrent.queue;
 
-
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
