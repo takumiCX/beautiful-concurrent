@@ -16,11 +16,11 @@ import java.util.concurrent.LinkedBlockingQueue;
  **/
 public class QueueTest {
 
-    static int testCount=100;
+    static int testCount = 100;
 
-    static int threadNum=200;
+    static int threadNum = 200;
 
-    static int queueOpNum=10000;
+    static int queueOpNum = 10000;
 
 
     @Test
@@ -44,7 +44,6 @@ public class QueueTest {
         }
         System.out.println("LockFreeSingleLinkedQueue: " + sum * 1.0 / testCount);
 
-
     }
 
     private long singleLinkedQueue() throws InterruptedException {
@@ -60,10 +59,11 @@ public class QueueTest {
             new Thread(new Runnable() {
                 public void run() {
                     for (int j = 0; j < queueOpNum; j++) {
-                        if (j%2==0) {
+                        if (j % 2 == 0) {
                             queue.enqueue(finalI + "-" + j);
                         } else {
                             queue.dequeue();
+
                         }
                     }
                     latch.countDown();
@@ -146,7 +146,7 @@ public class QueueTest {
             new Thread(new Runnable() {
                 public void run() {
                     for (int j = 0; j < queueOpNum; j++) {
-                        if (j%2==0) {
+                        if (j % 2 == 0) {
                             queue.offer(finalI + "-" + j);
                         } else {
                             queue.poll();
@@ -164,6 +164,7 @@ public class QueueTest {
 
     /**
      * 适配器
+     *
      * @param <E>
      */
     private static class QueueAdapter<E> extends AbstractQueue<E> {
